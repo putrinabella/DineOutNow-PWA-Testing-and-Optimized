@@ -1,0 +1,712 @@
+$yellow: #fea116;
+$basic: whitesmoke;
+$white: white;
+$blackgrey: #212431;
+$colorchild: inherit;
+$pureblack: black;
+$initialbasic: initial;
+$red: #bf1722;
+$grey: #ccc;
+$bg-color-1: #fdfdfd;
+$bg-color-2: #f9f9f9;
+$font: "Tilt Neon", cursive;
+
+@import "https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Tilt+Neon&display=swap";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: $font;
+  color: $blackgrey;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+/*
+    AppBar
+  */
+
+.app-bar {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  padding: 8px 16px;
+  background-color: $blackgrey;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  &__menu {
+    display: flex;
+    align-items: center;
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 18px;
+      padding: 8px;
+      cursor: pointer;
+    }
+  }
+  &__brand {
+    display: flex;
+    justify-content: left;
+    margin-right: auto;
+    padding-left: 5px;
+    margin-left: 10px;
+    img {
+      height: 50px;
+      width: auto;
+    }
+    h1 {
+      color: $yellow;
+      font-size: 22px;
+      font-weight: 100;
+      user-select: none;
+    }
+  }
+  &__navigation {
+    position: absolute;
+    top: 56px;
+    left: -100%;
+    width: 90%;
+    transition: all 0.3s;
+    padding: 8px;
+    padding-bottom: 0;
+    background-color: $blackgrey;
+    overflow: hidden;
+    text-align: center;
+    ul {
+      display: inline-block;
+      padding: 0px 2px 0px 2px;
+      width: 100%;
+      li {
+        position: relative;
+        a {
+          text-decoration: none;
+          font-size: 1.05rem;
+          font-weight: 500;
+          color: $basic;
+          padding: 0;
+          border-radius: 5px;
+          width: 100px;
+          transition: all 0.2s ease-in-out;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 80%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $yellow;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease-in-out;
+          }
+          &:hover {
+            text-decoration: none;
+            &::before {
+              transform: scaleX(1);
+              transform-origin: left;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__navigation.open {
+    left: 0;
+    .app-bar__item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app-bar__item a {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
+
+.app-bar__navigation a,
+.app-bar__menu button,
+.app-bar__item {
+  min-width: 45px;
+  min-height: 45px;
+}
+
+.header-menu {
+  color: $white;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  background-image: url("/src/public/images/heros/hero-background-large.jpg");
+  background-position: bottom;
+  padding-top: 100px;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $blackgrey;
+  opacity: 60%;
+  z-index: 1;
+}
+.hero-inner {
+  margin: 5%;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  z-index: 2;
+  text-decoration: none;
+}
+.hero-plain {
+  display: inline-block;
+  color: $white;
+  font-weight: 500;
+  font-size: 250%;
+  background-color: $blackgrey;
+  padding: 0 5px;
+}
+
+.hero-title {
+  display: inline-block;
+  color: $yellow;
+  font-weight: 500;
+  font-size: 250%;
+  background-color: $bg-color-1;
+  padding: 0 5px;
+  margin-top: 10px;
+}
+.hero-tagline {
+  color: $white;
+  margin-top: 16px;
+  font-size: 110%;
+  font-weight: 300;
+  text-align: left;
+  span {
+    color: $yellow;
+  }
+}
+
+/*
+  Main Content
+*/
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  background-color: $bg-color-2;
+}
+
+.space {
+  padding-top: 80px;
+  margin: 0 auto;
+}
+
+.content {
+  margin: 0 auto;
+  text-align: center;
+  .content-sub {
+    color: $yellow;
+    text-align: center;
+    font-weight: 500;
+    padding: 0 10% 0 10%;
+  }
+}
+
+.content-label {
+  font-size: 200%;
+  font-weight: 500;
+  text-align: center;
+  padding: 2%;
+  margin: auto;
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+  min-width: 45px;
+  min-height: 45px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 10vw;
+    height: 6px;
+    background-color: $yellow;
+    left: -10vw;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 10vw;
+    height: 6px;
+    background-color: $yellow;
+    right: -10vw;
+  }
+}
+.posts {
+  margin: 32px auto auto;
+  text-align: left;
+  display: grid;
+  grid-gap: 30px;
+  padding: 2%;
+  margin: 10px;
+  justify-content: center;
+}
+.post-item {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: $white;
+  width: 300px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-right: 100px;
+  position: relative;
+  padding: 5%;
+  text-align: center;
+  justify-content: center;
+  .content {
+    padding: 20px;
+  }
+  .thumbnail {
+    width: 100%;
+    height: 300px;
+    max-height: 300px;
+    margin-bottom: 10px;
+    background-position: cover;
+  }
+  .rating {
+    color: $yellow;
+    text-decoration: none;
+    padding: 5px;
+  }
+  .title {
+    color: $yellow;
+    font-size: 25px;
+    padding: 5px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 45px;
+    min-height: 45px;
+    align-items: center;
+    &:hover {
+      opacity: 0.5;
+    }
+    a {
+      color: $colorchild;
+      text-align: center;
+    }
+  }
+  .description {
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: break-word;
+    max-height: 6em;
+    line-height: 1.5em;
+    font-size: 15px;
+    text-align: justify;
+    padding: 5px;
+  }
+}
+.city {
+  position: absolute;
+  top: 30px;
+  left: 4%;
+  background-color: $white;
+  opacity: 90%;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  width: auto;
+  color: $yellow;
+  border-radius: 0 5px 5px 0;
+  a {
+    color: $colorchild;
+    text-align: center;
+    text-decoration: none;
+    min-width: 45px;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+.card {
+  background-color: $white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+  }
+  .place {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    background-color: $white;
+    padding: 5px;
+    font-weight: bold;
+    width: auto;
+    height: auto;
+    color: $yellow;
+    border-radius: 0 5px 5px 0;
+    a {
+      color: $yellow;
+      text-align: center;
+      text-decoration: none;
+      min-width: 45px;
+      min-height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+.top-content {
+  color: $blackgrey;
+  a {
+    text-decoration: none;
+    color: $yellow;
+    min-width: 45px;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.containerDetail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.cardDetail {
+  background-color: $white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 100%;
+  max-width: 80%;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    height: fit-content;
+    object-fit: cover;
+    object-position: center;
+  }
+  .place {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    background-color: $white;
+    padding: 5px;
+    font-weight: bold;
+    width: auto;
+    height: auto;
+    color: $yellow;
+    border-radius: 0 5px 5px 0;
+    a {
+      color: $yellow;
+      text-align: center;
+      text-decoration: none;
+      min-width: 45px;
+      min-height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flex-item {
+  width: 48%;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.customer-review {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5em;
+  margin: 20px auto;
+
+  li {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+    p {
+      text-align: left;
+      margin: 0;
+    }
+    .name {
+      color: $yellow;
+      font-weight: bold;
+    }
+  }
+
+  .add-review-form {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $grey;
+      border-radius: 5px;
+      margin-top: 5px;
+      min-width: 45px;
+      min-height: 45px;
+    }
+    button {
+      background-color: $yellow;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 20px;
+      min-width: 45px;
+      min-height: 45px;
+    }
+  }
+}
+
+.containDetail {
+  .titleDetail {
+    color: $yellow;
+    padding: 5px;
+    text-decoration: none;
+    min-width: 45px;
+    min-height: 45px;
+    font-size: 30px;
+    &:hover {
+      opacity: 0.5;
+    }
+    a {
+      color: $colorchild;
+    }
+  }
+  .ratingDetail {
+    color: $yellow;
+    text-decoration: none;
+    font-size: 15px;
+  }
+
+  .typeResto {
+    display: flex;
+    justify-content: left;
+    margin: 10px 0 10px 0;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+    }
+    li {
+      display: inline-block;
+      border: 3px solid $yellow;
+      border-radius: 999px;
+      width: 100px;
+      text-align: center;
+    }
+  }
+
+  .descriptionDetail {
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: break-word;
+    max-height: 6em;
+    line-height: 1.5em;
+    font-size: 15px;
+    text-align: justify;
+    padding: 5px 10% 10px 5px;
+  }
+
+  .foods {
+    line-height: 1.5em;
+    font-size: 15px;
+    text-align: justify;
+    padding: 10px 10% 5px 5px;
+  }
+
+  .drinks {
+    line-height: 1.5em;
+    font-size: 15px;
+    text-align: justify;
+    padding: 10px 10% 5px 5px;
+  }
+}
+
+/*
+  Like
+*/
+
+.like {
+  font-size: 18px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background-color: #db0000;
+  color: white;
+  border: 0;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+    Footer
+  */
+
+footer {
+  // position: fixed;
+  // bottom: 0;
+  width: 100%;
+  padding: 16px;
+  background-color: $blackgrey;
+}
+
+footer p {
+  text-align: center;
+  color: $yellow;
+}
+
+footer p a {
+  color: #db0000;
+  text-decoration: none;
+}
+/*
+    Skip link
+  */
+
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background-color: #db0000;
+  color: #fff;
+  padding: 8px;
+  min-width: 45px;
+  min-height: 45px;
+  z-index: 100;
+  &:focus {
+    top: 80px;
+  }
+}
+
+#splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.logo {
+  width: 80%;
+  height: auto;
+}
+
+.loading-bar-container {
+  position: relative;
+  width: 60%;
+  height: 10px;
+  background-color: $blackgrey;
+  margin-top: 5px;
+}
+
+.loading-bar {
+  position: relative;
+  width: 0%;
+  height: 100%;
+  background-color: $yellow;
+  transition: width 0.5s ease-in-out;
+}
+
+#content {
+  text-align: center;
+}

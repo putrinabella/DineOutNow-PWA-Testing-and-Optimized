@@ -1,0 +1,4 @@
+node_modules
+dist
+.step-for-spec
+e2e/outputs
